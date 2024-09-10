@@ -24,3 +24,4 @@ public abstract class Timestamped {
     private LocalDateTime modifiedAt;
 }
 
+

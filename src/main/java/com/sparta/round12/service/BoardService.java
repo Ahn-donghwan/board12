@@ -17,6 +17,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     private Board findBoardById(Long boardId){
+        // NullPointerException
         return boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("ERROR! 해당 게시글을 찾을 수 없습니다."));
     }
 
@@ -29,16 +30,14 @@ public class BoardService {
         Board saveBoard = boardRepository.save(newBoard);
 
         // Id, Title, Contents 를 Response
-        return new BoardResponse(saveBoard.getId(), saveBoard.getBoardTitle(), saveBoard.getBoardContent(),
-                saveBoard.getCreatedAt(), saveBoard.getModifiedAt());
+        return new BoardResponse(saveBoard);
     }
 
 
     public BoardResponse getDetailBoard(Long boardId) {
         Board board = findBoardById(boardId);
 
-        return new BoardResponse( board.getId(), board.getBoardTitle(), board.getBoardContent(),
-                                board.getCreatedAt(), board.getModifiedAt());
+        return new BoardResponse(board);
     }
 
     @Transactional
@@ -47,8 +46,7 @@ public class BoardService {
 
         board.updateBoard(boardRequest.getBoardTitle(), boardRequest.getBoardContent());
 
-        return new BoardResponse(board.getId(), board.getBoardTitle(), board.getBoardContent(),
-                            board.getCreatedAt(), board.getModifiedAt());
+        return new BoardResponse(board);
     }
 
     @Transactional
