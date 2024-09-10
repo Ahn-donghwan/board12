@@ -36,6 +36,6 @@ public class BoardController {
     // 게시글 삭제
     @DeleteMapping("/{boardId}")
     public void deleteBoard(@PathVariable Long boardId){
-        return boardService.deleteBoard(boardId);
+        boardService.deleteBoard(boardId);
     }
 }
