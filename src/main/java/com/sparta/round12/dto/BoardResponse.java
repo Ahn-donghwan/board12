@@ -1,12 +1,11 @@
 package com.sparta.round12.dto;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Getter
 public class BoardResponse {
 

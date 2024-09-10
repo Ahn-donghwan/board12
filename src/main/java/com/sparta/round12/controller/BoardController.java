@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/boards")
+@RequestMapping("/api/boards")
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
@@ -23,14 +23,14 @@ public class BoardController {
 
     // 단건 조회
     @GetMapping("/{boardId}")
-    public BoardResponse getDetailBoard(@PathVariable Long boardId){
-        return boardService.getDetailBoard(boardId);
+    public ResponseEntity<BoardResponse> getDetailBoard(@PathVariable Long boardId){
+        return ResponseEntity.ok(boardService.getDetailBoard(boardId));
     }
 
     // 게시글 수정
     @PutMapping("/{boardId}")
-    public BoardResponse updateBoard(@PathVariable Long boardId, @RequestBody BoardRequest boardRequest){
-        return boardService.updateBoard(boardId, boardRequest);
+    public ResponseEntity<BoardResponse> updateBoard(@PathVariable Long boardId, @RequestBody BoardRequest boardRequest){
+        return ResponseEntity.ok(boardService.updateBoard(boardId, boardRequest));
     }
 
     // 게시글 삭제
