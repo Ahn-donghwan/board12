@@ -17,10 +17,15 @@ public class Board extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String boardTitle;
-    private String boardContents;
+    private String boardContent;
 
-    public Board(String boardTitle, String boardContents) {
+    public Board(String boardTitle, String boardContent) {
         this.boardTitle = boardTitle;
-        this.boardContents = boardContents;
+        this.boardContent = boardContent;
+    }
+
+    public void updateBoard(String boardTitle, String boardContent) {
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
     }
 }
